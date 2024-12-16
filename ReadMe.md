@@ -4,3 +4,5 @@
 * Minium element in Roatated Sorted Array
 * Single Element in a Sorted array
 * Find how many times a sorted array is rotated
+* Find Peak Element
+  
