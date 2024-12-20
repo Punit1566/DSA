@@ -13,7 +13,8 @@ public:
                 hi=mid-1;
             }
         }
-        return k-(-hi-1);
+        return k-(-hi-1);//simplified version of arr[hi]+k-(arr[hi]-hi-1)
+        // think about a tc which consist only one element;
         
     }
 };
