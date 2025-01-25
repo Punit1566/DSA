@@ -8,6 +8,8 @@ public:
         int idx=0;
         unordered_map<int,queue<int>>mp;
         mp[idx].push(temp[0]);
+        unordered_map<int,int>check;
+        check[temp[0]]=idx;
         for(int i=1;i<n;i++){
             if(temp[i]-temp[i-1]<=limit){
                 mp[idx].push(temp[i]);
@@ -15,14 +17,7 @@ public:
                 idx++;
                 mp[idx].push(temp[i]);
             }
-        }
-        unordered_map<int,queue<int>>temp_mp(mp.begin(),mp.end());
-        unordered_map<int,int>check;
-        for(auto x:temp_mp){
-            while(!x.second.empty()){
-                check[x.second.front()]=x.first;
-                x.second.pop();
-            }
+            check[temp[i]]=idx;
         }
         for(int i=0;i<n;i++){
             int find_set=check[nums[i]];
