@@ -33,7 +33,6 @@ public:
                 }else{
                     return {u,v};
                 }
-                cout<<u<<" "<<v<<" "<<ans<<endl;
             }
         }
         return {-1,-1};
