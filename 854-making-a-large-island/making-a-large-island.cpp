@@ -8,7 +8,7 @@ class DSU{
     }
     int findUParent(int n){
         if(parent[n]==n)return n;
-        return parent[n]=findUParent(parent[n]);
+        return findUParent(parent[n]);
     }
     void UnionBySize(int u,int v){
         int ulp_u=findUParent(u);
@@ -76,22 +76,22 @@ public:
                     unordered_set<int>st;
                     int ans=0;
                     for(auto &x:nbr){
-                        int nrow=row+x.first;
-                        int ncol=col+x.second;
-                        if(isValid(n,nrow,ncol)&&grid[nrow][ncol]==1){
-                            int idx=nrow*n+ncol;
-                            int ulp_idx=d.findUParent(idx);
-                            if(st.find(ulp_idx)==st.end()){
-                                ans+=d.size[ulp_idx];
-                                st.insert(ulp_idx);
+                            int nrow=row+x.first;
+                            int ncol=col+x.second;
+                            if(isValid(n,nrow,ncol)&&grid[nrow][ncol]==1){
+                                int idx=nrow*n+ncol;
+                                int ulp_idx=d.findUParent(idx);
+                                if(st.find(ulp_idx)==st.end()){
+                                    ans+=d.size[ulp_idx];
+                                    st.insert(ulp_idx);
+                                }
                             }
-                        }
                     }
                     maxi=max(maxi,ans+1);
                 }
             }
         }
-        if(maxi==0)return n*n;
+        if(!maxi)return n*n;
         return maxi;
     }
 };
