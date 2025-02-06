@@ -8,7 +8,7 @@ class DSU{
     }
     int findUParent(int n){
         if(parent[n]==n)return n;
-        return findUParent(parent[n]);
+        return parent[n]=findUParent(parent[n]);
     }
     void UnionBySize(int u,int v){
         int ulp_u=findUParent(u);
